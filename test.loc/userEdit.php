@@ -1,4 +1,5 @@
 <?php
+session_start();
 function userExists($email)
 {   
     $result = false;
@@ -89,7 +90,7 @@ function deleteUser($email)
   }
 }
 
-function sortAcsending()
+function sortAcsending($data)
 {
   $arr = [];
   if (($file = fopen("data/users.csv", "r")) !== false) 
@@ -104,14 +105,12 @@ function sortAcsending()
   
   sort($arr);
 
-  foreach($arr as $item)
-  {
-    echo $item . "<br>";
-  }
+  $data = $arr;
+ 
   return true;
 }
 
-function sortDesending()
+function sortDesending($data)
 {
   $arr = [];
   if (($file = fopen("data/users.csv", "r")) !== false) 
@@ -126,22 +125,31 @@ function sortDesending()
   
   rsort($arr);
 
-  foreach($arr as $item)
-  {
-    echo $item . "<br>";
-  }
+  $data = $arr;
+  
   return true;
 }
 
+function showSortData($data)
+{
+  if(sortDesending($data) === true || sortAcsending($data) === true)
+  {
+    foreach($data as $item)
+    {
+      echo $item . "</br>";
+    }
+  }
+}
+  
 
     if($_REQUEST['descending_sort'])
     {
-      echo sortDesending();
+      showSortData($_SESSION['data']);
     }
 
     if($_REQUEST['ascending_sort'])
     {
-      echo sortAcsending();
+      showSortData($_SESSION['data']);
     }
 
     if($_REQUEST['edit'])
