@@ -89,11 +89,6 @@ function deleteUser($email)
   }
 }
 
-function callBackSortAcsending($a, $b)
-{
-  return strcmp($a["email"], $b["email"]);
-}
-
 function sortAcsending()
 {
   $arr = [];

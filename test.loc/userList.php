@@ -21,9 +21,9 @@
         $num++;
         echo "<form action=\"userEdit.php\" method=\"POST\"";
         echo "<tr>";
-        echo "<td>" . "<p>" . "<input type=\"radio\" name=\"num\" value=\"$num\" checked>" . "</p>" . "</td>";
-        echo "<td>" . "<p>" . "<input type=\"text\" name=\"received_email\" value=\"$data[0]\">" . "</p>" . "</td>";
-        echo "<td>" . "<p>" . "<input type=\"text\" name=\"pass\" value=\"$data[1]\">" . "</p>" . "</td>";
+        echo "<td>" . "<input type=\"radio\" name=\"num\" value=\"$num\" checked>" . "</td>";
+        echo "<td>" . "<input type=\"text\" name=\"received_email\" value=\"$data[0]\">" . "</td>";
+        echo "<td>" . "<input type=\"text\" name=\"pass\" value=\"$data[1]\">" . "</td>";
         echo "<td>" . "<input type=\"submit\" name=\"edit\" value=\"Edit\">" . "</td>";
         echo "<td>" . "<input type=\"submit\" name=\"delete\" value=\"Delete\">" . "</td>";
         echo "</tr>";
