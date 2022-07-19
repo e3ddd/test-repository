@@ -60,8 +60,6 @@ function delete($email)
 }
 
 
-
-
 function editUser($email, $pass, $userNum)
 {
   if(userExists($email) === true)
@@ -125,25 +123,7 @@ function sortDescending()
   return $arr;
 }
 
-function showSortData($data)
-{
- foreach ($data as $item) 
- {
-  echo $item . "<br>";
- }
-}
 
-
-
-if($_REQUEST['descending_sort'])
-{
- echo showSortData(sortDescending());
-}
- 
-if($_REQUEST['ascending_sort'])
-{
-  echo showSortData(sortAcsending());
-}
 
 if($_REQUEST['edit'])
 {
