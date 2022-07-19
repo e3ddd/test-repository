@@ -1,5 +1,4 @@
 <?php
-session_start();
 function userExists($email)
 {   
     $result = false;
@@ -90,7 +89,7 @@ function deleteUser($email)
   }
 }
 
-function sortAcsending($data)
+function sortAcsending()
 {
   $arr = [];
   if (($file = fopen("data/users.csv", "r")) !== false) 
@@ -104,13 +103,11 @@ function sortAcsending($data)
   }
   
   sort($arr);
-
-  $data = $arr;
- 
-  return true;
+   
+  return $arr;
 }
 
-function sortDesending($data)
+function sortDescending()
 {
   $arr = [];
   if (($file = fopen("data/users.csv", "r")) !== false) 
@@ -125,42 +122,39 @@ function sortDesending($data)
   
   rsort($arr);
 
-  $data = $arr;
-  
-  return true;
+  return $arr;
 }
 
 function showSortData($data)
 {
-  if(sortDesending($data) === true || sortAcsending($data) === true)
-  {
-    foreach($data as $item)
-    {
-      echo $item . "</br>";
-    }
-  }
+ foreach ($data as $item) 
+ {
+  echo $item . "<br>";
+ }
 }
-  
 
-    if($_REQUEST['descending_sort'])
-    {
-      showSortData($_SESSION['data']);
-    }
 
-    if($_REQUEST['ascending_sort'])
-    {
-      showSortData($_SESSION['data']);
-    }
 
-    if($_REQUEST['edit'])
-    {
-      echo editUser($_POST['received_email'], $_POST['pass'],  $_POST['num']);
-    }
+if($_REQUEST['descending_sort'])
+{
+ echo showSortData(sortDescending());
+}
+ 
+if($_REQUEST['ascending_sort'])
+{
+  echo showSortData(sortAcsending());
+}
 
-   if($_REQUEST['delete'])
-   {
-     echo deleteUser($_POST['received_email']);
-   }
+if($_REQUEST['edit'])
+{
+ echo editUser($_POST['received_email'], $_POST['pass'],  $_POST['num']);
+}
+
+if($_REQUEST['delete'])
+{    
+ echo deleteUser($_POST['received_email']);
+}
+
 
    
    
