@@ -72,6 +72,7 @@ function editUser($email, $pass, $userNum)
     {
       copy("data/newUsers.csv", "data/users.csv");
       unlink("data/newUsers.csv");
+      
       return true;
     }
   }
@@ -87,7 +88,7 @@ function deleteUser($email)
   }
 }
 
-function sortAcsending()
+function sortAscending()
 {
   $arr = [];
   if (($file = fopen("data/users.csv", "r")) !== false) 
@@ -125,16 +126,31 @@ function sortDescending()
 
 
 
+if($_REQUEST['ascending_sort'])
+{
+ header("Location: http://www.test.loc/userAscendingList.php");
+}
+
+
+if($_REQUEST['descending_sort'])
+{
+  header("Location: http://www.test.loc/userDescendingList.php");
+}
+else
+
+
 if($_REQUEST['edit'])
 {
- echo editUser($_POST['received_email'], $_POST['pass'],  $_POST['num']);
+ if(editUser($_POST['received_email'], $_POST['pass'],  $_POST['num']) === true)
+ {
+  header("Location: http://www.test.loc/userList.php");
+ };
 }
 
 if($_REQUEST['delete'])
 {    
- echo deleteUser($_POST['received_email']);
-}
-
-
-   
-   
+ if (deleteUser($_POST['received_email']) === true)
+ {
+  header("Location: http://www.test.loc/userList.php");
+ };
+}  
