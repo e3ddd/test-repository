@@ -19,7 +19,8 @@
       $num = 0;
        while (($data = fgetcsv($file, 1000, ",")) !== false) 
       {
-        $num++; 
+        $num++;
+        $data[0] = sortAscending()[$num - 1];
         include "sampleUserList.php";
       }
       echo "<input type=\"submit\" name=\"descending_sort\" value=\"Descending Sort\">";

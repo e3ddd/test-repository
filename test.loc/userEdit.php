@@ -136,7 +136,7 @@ if($_REQUEST['descending_sort'])
 {
   header("Location: http://www.test.loc/userDescendingList.php");
 }
-else
+
 
 
 if($_REQUEST['edit'])
