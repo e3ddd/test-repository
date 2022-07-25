@@ -13,20 +13,7 @@
     <table>
     <caption>USERS LIST</caption>
     <?php
-    include "userEdit.php";
-    if (($file = fopen("data/users.csv", "r")) !== false) 
-    { 
-      $num = 0;
-       while (($data = fgetcsv($file, 1000, ",")) !== false) 
-      {
-        $num++; 
-        include "sampleUserList.php";
-      }
-      echo "<input type=\"submit\" name=\"descending_sort\" value=\"Descending Sort\">";
-      echo "<br>";
-      echo "<input type=\"submit\" name=\"ascending_sort\" value=\"Ascending Sort\">";
-    }  
-    fclose($file);
+      include "showUserList.php";
     ?>
     </table>
     </form>

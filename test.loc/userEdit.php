@@ -126,31 +126,23 @@ function sortDescending()
 
 
 
-if($_REQUEST['ascending_sort'])
-{
- header("Location: http://www.test.loc/userAscendingList.php");
-}
+    if($_REQUEST['ascending_sort'])
+    {
+   
+    }
 
 
-if($_REQUEST['descending_sort'])
-{
-  header("Location: http://www.test.loc/userDescendingList.php");
-}
+    if($_REQUEST['descending_sort'])
+    {
+    
+    }
 
+    if($_REQUEST['edit'])
+    {
+     editUser($_POST['received_email'], $_POST['pass'],  $_POST['num']);
+    }
 
-
-if($_REQUEST['edit'])
-{
- if(editUser($_POST['received_email'], $_POST['pass'],  $_POST['num']) === true)
- {
-  header("Location: http://www.test.loc/userList.php");
- };
-}
-
-if($_REQUEST['delete'])
-{    
- if (deleteUser($_POST['received_email']) === true)
- {
-  header("Location: http://www.test.loc/userList.php");
- };
-}  
+    if($_REQUEST['delete'])
+    {    
+     deleteUser($_POST['received_email']);
+    }  
